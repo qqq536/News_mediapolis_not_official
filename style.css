@@ -276,6 +276,7 @@ footer {
         .md-content ul, .md-content ol {
             margin-bottom: 1.2rem;
             padding-left: 2rem;
+            font-size: 1.0rem;
         }
 
         .md-content li {
