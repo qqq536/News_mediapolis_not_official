@@ -39,6 +39,33 @@ footer {
     color: white;
     padding: 3rem 0 2rem;
 }
+      /* Адаптивное видео */
+.video-container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%; /* Соотношение 16:9 */
+    margin: 1rem 0;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 8px;
+}
+
+/* Для разных соотношений сторон */
+.video-container-4-3 {
+    padding-bottom: 75%; /* 4:3 */
+}
+
+.video-container-1-1 {
+    padding-bottom: 100%; /* 1:1 */
+}
 
         .container {
             max-width: 1200px;
@@ -360,4 +387,5 @@ footer {
             .modal-content {
                 padding: 1.5rem;
             }
+
         }
