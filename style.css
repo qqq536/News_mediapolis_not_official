@@ -6,13 +6,17 @@
         }
 
         :root {
-            --primary: #2563eb;
-            --primary-dark: #1d4ed8;
-            --secondary: #f59e0b;
-            --dark: #1e293b;
-            --light: #f8fafc;
-            --gray: #64748b;
-            --gray-light: #e2e8f0;
+            :root {
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --secondary: #f59e0b;
+    --emerald: #10b981;     /* Изумрудный цвет */
+    --emerald-dark: #059669; /* Темный изумрудный */
+    --dark: #1e293b;
+    --light: #f8fafc;
+    --gray: #64748b;
+    --gray-light: #e2e8f0;
+}
         }
 
         body {
@@ -389,6 +393,7 @@ footer {
             }
 
         }
+
 
 
 
