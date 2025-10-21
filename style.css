@@ -108,7 +108,7 @@ footer {
 
         nav a {
             text-decoration: none;
-            color: white;
+            color: var(--primary) ;
             font-weight: 500;
             padding: 0.5rem 1rem;
             border-radius: 8px;
@@ -393,6 +393,7 @@ footer {
             }
 
         }
+
 
 
 
