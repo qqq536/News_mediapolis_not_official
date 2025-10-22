@@ -93,69 +93,53 @@
                 }
             }
 
-            async loadPost(filename) {
-                try {
-                    const response = await fetch(filename);
-                    if (!response.ok) {
-                        throw new Error(`Файл ${filename} не найден`);
-                    }
-                    
-                    const content = await response.text();
-                    const lines = content.split('\n');
-                    
-                    let title = this.filenameToTitle(filename);
-                    let excerpt = '';
-                    let date = new Date().toLocaleDateString('ru-RU');
-                    let category = 'Статья';
-                    let image = '📝';
+           async loadPost(filename) {
+    try {
+        const response = await fetch(filename);
+        const content = await response.text();
+        const lines = content.split('\n');
+        
+        let title = this.filenameToTitle(filename);
+        let excerpt = '';
+        let date = new Date().toLocaleDateString('ru-RU');
+        let category = 'Статья';
+        let image = './images/default.jpg'; // картинка по умолчанию
 
-                    if (lines[0].startsWith('---')) {
-                        let i = 1;
-                        while (i < lines.length && !lines[i].startsWith('---')) {
-                            const line = lines[i];
-                            if (line.startsWith('title:')) {
-                                title = line.replace('title:', '').trim();
-                            } else if (line.startsWith('excerpt:')) {
-                                excerpt = line.replace('excerpt:', '').trim();
-                            } else if (line.startsWith('date:')) {
-                                date = line.replace('date:', '').trim();
-                            } else if (line.startsWith('category:')) {
-                                category = line.replace('category:', '').trim();
-                            } else if (line.startsWith('image:')) {
-                                image = line.replace('image:', '').trim();
-                            }
-                            i++;
-                        }
-                    }
-
-                    if (!excerpt) {
-                        const contentStart = lines.findIndex(line => !line.startsWith('---') && line.trim() !== '');
-                        if (contentStart !== -1) {
-                            excerpt = lines.slice(contentStart, contentStart + 3)
-                                .join(' ')
-                                .substring(0, 120) + '...';
-                        } else {
-                            excerpt = 'Читать статью...';
-                        }
-                    }
-
-                    this.posts.push({
-                        filename,
-                        title,
-                        excerpt,
-                        date,
-                        category,
-                        image,
-                        content
-                    });
-
-                    return true;
-                } catch (error) {
-                    console.error(`Ошибка загрузки ${filename}:`, error);
-                    return false;
+        if (lines[0].startsWith('---')) {
+            let i = 1;
+            while (i < lines.length && !lines[i].startsWith('---')) {
+                const line = lines[i];
+                if (line.startsWith('title:')) {
+                    title = line.replace('title:', '').trim();
+                } else if (line.startsWith('excerpt:')) {
+                    excerpt = line.replace('excerpt:', '').trim();
+                } else if (line.startsWith('date:')) {
+                    date = line.replace('date:', '').trim();
+                } else if (line.startsWith('category:')) {
+                    category = line.replace('category:', '').trim();
+                } else if (line.startsWith('image:')) {
+                    image = line.replace('image:', '').trim();
                 }
+                i++;
             }
+        }
 
+        this.posts.push({
+            filename,
+            title,
+            excerpt,
+            date,
+            category,
+            image,  // ← НОВОЕ ПОЛЕ!
+            content
+        });
+
+        return true;
+    } catch (error) {
+        console.error(`Ошибка загрузки ${filename}:`, error);
+        return false;
+    }
+}
             filenameToTitle(filename) {
                 return filename
                     .replace('.md', '')
@@ -254,6 +238,7 @@
 </body>
 
 </html>
+
 
 
 
