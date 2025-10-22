@@ -1,12 +1,11 @@
+/* style.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            :root {
+:root {
     --primary: #2563eb;
     --primary-dark: #1d4ed8;
     --secondary: #f59e0b;
@@ -17,39 +16,325 @@
     --gray: #64748b;
     --gray-light: #e2e8f0;
 }
-        }
 
-        body {
-            font-family: 'Segoe UI', system-ui, sans-serif;
-            line-height: 1.6;
-            color: var(--dark);
-            background-color: #000000;
-            min-height: 100vh;
-        }
-                     /* Простой способ - через min-height и margin-top */
-         body {
-         min-height: 100vh;
-         display: flex;
-         flex-direction: column;
-        }
-
-main {
-    flex: 1;
-     }
-
-footer {
-    margin-top: auto;
-    background: var(--dark);
-    color: white;
-    padding: 3rem 0 2rem;
+/* Основная структура */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
-      /* Адаптивное видео */
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    line-height: 1.6;
+    color: var(--dark);
+    background-color: #f8fafc;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header - Адаптивный */
+header {
+    background: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 0;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--emerald); /* Изумрудный логотип */
+    text-decoration: none;
+}
+
+/* Навигационная панель - Изумрудный цвет */
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--emerald); /* Изумрудный цвет текста */
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-family: 'Roboto', sans-serif;
+}
+
+nav a:hover {
+    background: var(--emerald); /* Изумрудный фон при наведении */
+    color: white;
+}
+
+nav a.active {
+    background: var(--emerald); /* Изумрудный фон для активной */
+    color: white;
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 4rem 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    margin-bottom: 3rem;
+    border-radius: 0 0 20px 20px;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Blog Grid */
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+.blog-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.blog-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+}
+
+.blog-image {
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 2.5rem;
+}
+
+.blog-content {
+    padding: 1.5rem;
+}
+
+.blog-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    color: var(--gray);
+}
+
+.blog-category {
+    background: var(--primary);
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.blog-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--dark);
+    line-height: 1.4;
+}
+
+.blog-excerpt {
+    color: var(--gray);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.read-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: gap 0.3s ease;
+}
+
+.read-more:hover {
+    gap: 0.8rem;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    z-index: 2000;
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 2rem;
+    border-radius: 16px;
+    max-width: 800px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+
+.close-modal {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--gray);
+    transition: color 0.3s ease;
+}
+
+.close-modal:hover {
+    color: var(--dark);
+}
+
+/* Markdown Styles - TIMES NEW ROMAN STYLE */
+.md-content {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #333;
+}
+
+.md-content h1 {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin: 1.5rem 0 0.8rem;
+    color: #000;
+}
+
+.md-content h2 {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin: 1.3rem 0 0.7rem;
+    color: #000;
+}
+
+.md-content h3 {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 1.1rem 0 0.6rem;
+    color: #000;
+}
+
+.md-content p {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+    margin-bottom: 0.8rem;
+    color: #333;
+}
+
+.md-content ul, .md-content ol {
+    font-family: "Times New Roman", Times, serif;
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+}
+
+.md-content li {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 0.3rem;
+    line-height: 1.5;
+}
+
+.md-content blockquote {
+    font-family: "Times New Roman", Times, serif;
+    border-left: 2px solid #666;
+    padding: 1rem 1.5rem;
+    margin: 1.5rem 0;
+    background: #f9f9f9;
+    font-style: italic;
+    font-size: 14px;
+}
+
+.md-content strong {
+    font-weight: 700;
+}
+
+.md-content em {
+    font-style: italic;
+    font-weight: 400;
+}
+
+.md-content code {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 13px;
+}
+
+.md-content pre {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 13px;
+}
+
+/* Адаптивное видео */
 .video-container {
     position: relative;
     width: 100%;
     height: 0;
     padding-bottom: 56.25%; /* Соотношение 16:9 */
-    margin: 1rem 0;
+    margin: 2rem 0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    background: #000;
 }
 
 .video-container iframe {
@@ -59,340 +344,113 @@ footer {
     width: 100%;
     height: 100%;
     border: none;
-    border-radius: 8px;
 }
 
-/* Для разных соотношений сторон */
-.video-container-4-3 {
-    padding-bottom: 75%; /* 4:3 */
+/* Для Google Drive видео */
+.video-container iframe[src*="google"] {
+    border-radius: 12px;
 }
 
-.video-container-1-1 {
-    padding-bottom: 100%; /* 1:1 */
+/* Footer - прикреплен к низу */
+footer {
+    flex-shrink: 0;
+    background: var(--dark);
+    color: white;
+    padding: 3rem 0 2rem;
+    margin-top: auto;
 }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header */
-        header {
-            background: var(--dark) ;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.5rem 0;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--primary);
-            text-decoration: none;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: var(--primary) ;
-            font-weight: 500;
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-        }
-
-        nav a:hover, nav a.active {
-            background: var(--primary);
-            color: white;
-        }
-
-        /* Hero Section */
-        .hero {
-            text-align: center;
-            padding: 4rem 0;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            margin-bottom: 3rem;
-            border-radius: 0 0 20px 20px;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* Blog Grid */
-        .blog-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 2rem;
-            margin-bottom: 4rem;
-        }
-
-        .blog-card {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .blog-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
-        }
-
-        .blog-image {
-            width: 100%;
-            height: 200px;
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 2.5rem;
-        }
-
-        .blog-content {
-            padding: 1.5rem;
-        }
-
-        .blog-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-            font-size: 0.9rem;
-            color: var(--gray);
-        }
-
-        .blog-category {
-            background: var(--primary);
-            color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-
-        .blog-title {
-            font-size: 1.4rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: var(--dark);
-            line-height: 1.4;
-        }
-
-        .blog-excerpt {
-            color: var(--gray);
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-        }
-
-        .read-more {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 500;
-            transition: gap 0.3s ease;
-        }
-
-        .read-more:hover {
-            gap: 0.8rem;
-        }
-
-        /* Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.8);
-            z-index: 2000;
-            backdrop-filter: blur(5px);
-        }
-
-        .modal-content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: white;
-            padding: 2rem;
-            border-radius: 16px;
-            max-width: 800px;
-            width: 90%;
-            max-height: 90vh;
-            overflow-y: auto;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--gray);
-            transition: color 0.3s ease;
-        }
-
-        .close-modal:hover {
-            color: var(--dark);
-        }
-
-/* Markdown Content - ОСНОВНОЙ ТЕКСТ МЕЖДУ --- */
-.md-content {
-    font-size: 14px; /* Мелкий размер */
-    font-weight: 300; /* Легкий вес */
-    line-height: 1.5;
-    color: #555; /* Не такой черный */
+.footer-content {
+    text-align: center;
 }
 
-.md-content p {
-    font-size: 17px;
-    font-weight: 300;
-    line-height: 1.5;
-    margin-bottom: 0.8rem;
-    color: #000000;
-    font-family: "Times New Roman", Times, serif;
+.loading {
+    text-align: center;
+    padding: 3rem;
+    color: var(--gray);
 }
 
-/* Заголовки оставляем более заметными */
-.md-content h1 {
-    font-size: 1.4rem;
-    font-weight: 500; /* Средний вес */
-    color: #333;
+.error {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    margin: 2rem 0;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
 }
 
-.md-content h2 {
-    font-size: 1.2rem;
-    font-weight: 500;
-    color: #333;
+/* Адаптивность */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    nav ul {
+        gap: 1rem;
+    }
+
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .blog-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .modal-content {
+        padding: 1.5rem;
+    }
+    
+    .video-container {
+        margin: 1rem 0;
+        border-radius: 8px;
+    }
+    
+    .md-content {
+        font-size: 13px;
+    }
+    
+    .md-content h1 {
+        font-size: 1.4rem;
+    }
+    
+    .md-content h2 {
+        font-size: 1.2rem;
+    }
+    
+    .md-content h3 {
+        font-size: 1.1rem;
+    }
 }
 
-.md-content h3 {
-    font-size: 1.1rem;
-    font-weight: 500;
-    color: #333;
+@media (max-width: 480px) {
+    nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+    }
+    
+    .hero {
+        padding: 3rem 0;
+    }
+    
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+    
+    .video-container {
+        margin: 0.5rem 0;
+        border-radius: 6px;
+    }
+    
+    .blog-image {
+        height: 150px;
+        font-size: 2rem;
+    }
 }
-        .md-content ul, .md-content ol {
-            margin-bottom: 1.2rem;
-            padding-left: 2rem;
-            font-size: 1.0rem;
-        }
-
-        .md-content li {
-            margin-bottom: 0.5rem;
-        }
-
-        .md-content blockquote {
-            border-left: 4px solid var(--primary);
-            padding: 1rem 1.5rem;
-            margin: 1.5rem 0;
-            background: var(--gray-light);
-            border-radius: 0 8px 8px 0;
-            font-style: italic;
-        }
-
-        .md-content code {
-            background: var(--gray-light);
-            padding: 0.2rem 0.4rem;
-            border-radius: 4px;
-            font-family: 'Courier New', monospace;
-            font-size: 0.1rem;
-        }
-
-        .md-content pre {
-            background: var(--dark);
-            color: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            overflow-x: auto;
-            margin: 0.5rem 0;
-        }
-
-        .md-content pre code {
-            background: none;
-            padding: 0;
-            color: inherit;
-        }
         
 
-        /* Footer */
-        footer {
-            background: var(--dark);
-            color: rgb(255, 255, 255);
-            padding: 3rem 0 2rem;
-            margin-top: 4rem;
-        }
-
-        .footer-content {
-            text-align: center;
-        }
-
-        .loading {
-            text-align: center;
-            padding: 3rem;
-            color: var(--gray);
-        }
-
-        .error {
-            background: white;
-            padding: 2rem;
-            border-radius: 12px;
-            text-align: center;
-            margin: 2rem 0;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-        }
-
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-
-            .blog-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .modal-content {
-                padding: 1.5rem;
-            }
-
-        }
 
 
 
