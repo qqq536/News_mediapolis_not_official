@@ -30,11 +30,14 @@ body {
     min-height: 100vh;
     font-family: 'Segoe UI', system-ui, sans-serif;
     line-height: 1.6;
-    color: var(--dark);
-    body {
-    background: #f0fdf9; /* Очень светлый изумрудный */
-    } 
-}
+   } 
+ .blog-grid {
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    padding: 2rem;
+    border-radius: 16px;
+    margin: 0 1rem 3rem;
+}   color: var(--dark);
+
 
 .container {
     max-width: 1200px;
@@ -459,6 +462,7 @@ footer {
     }
 }
         
+
 
 
 
