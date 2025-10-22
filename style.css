@@ -137,12 +137,32 @@ nav a.active {
 .blog-image {
     width: 100%;
     height: 200px;
-    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
+}
+
+/* Градиент поверх картинки для лучшей читаемости текста */
+.blog-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(0,0,0,0.3), rgba(0,0,0,0.1));
+}
+
+.blog-image i {
+    position: relative;
+    z-index: 1;
     font-size: 2.5rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
 }
 
 .blog-content {
@@ -449,3 +469,4 @@ footer {
         font-size: 2rem;
     }
 }
+
